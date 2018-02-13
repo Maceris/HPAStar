@@ -2,6 +2,12 @@ package com.ikalagaming.pathing;
 
 import java.util.Optional;
 
+/**
+ * A graph that stores nodes.
+ * 
+ * @author Ches Burks
+ *
+ */
 public interface Graph {
 	public void addNode(Node n1, final int lvl);
 

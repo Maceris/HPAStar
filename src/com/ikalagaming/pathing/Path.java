@@ -5,6 +5,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+/**
+ * The steps to take to get from the start position to end position that is
+ * calculated by the pathfinding algorithm. This should be easily traversed
+ * either forwards or backwards.
+ * 
+ * @author Ches Burks
+ *
+ */
 public class Path {
 
 	/**

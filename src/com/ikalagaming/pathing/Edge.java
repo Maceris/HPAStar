@@ -1,5 +1,11 @@
 package com.ikalagaming.pathing;
 
+/**
+ * An edge between two nodes.
+ * 
+ * @author Ches Burks
+ *
+ */
 public interface Edge {
 
 	/**

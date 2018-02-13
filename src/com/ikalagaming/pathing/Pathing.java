@@ -3,11 +3,17 @@ package com.ikalagaming.pathing;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * The main class for dealing with pathfinding. Used to create a maze and do
+ * pathing between points.
+ * 
+ * @author Ches Burks
+ *
+ */
 public class Pathing {
 
 	private Set<Entrance> entrances;
@@ -56,6 +62,7 @@ public class Pathing {
 	 * @param lvl the level to add.
 	 */
 	private void addLevelToGraph(final int lvl) {
+		// TODO handle invalid levels
 		this.clusters.set(lvl, this.buildClusters(lvl));
 		Set<Cluster> cL = this.clusters.get(lvl);
 		for (Cluster c1 : cL) {
