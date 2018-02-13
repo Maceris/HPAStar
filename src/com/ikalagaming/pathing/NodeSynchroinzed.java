@@ -17,14 +17,15 @@ class NodeSynchroinzed extends Node {
 	private ReentrantLock dataLock;
 	private Node child;
 
-	public NodeSynchroinzed() {
-
-	}
+	/**
+	 * Creates a synchronized node.
+	 */
+	public NodeSynchroinzed() {}
 
 	/**
 	 * For serialization, initialize components so they exist before method
 	 * calls in the constructor. Called at the beginning of the
-	 * {@link Node#Point(int, int, int)} constructor.
+	 * {@link Node#Node(int, int, int)} constructor.
 	 */
 	@Override
 	protected void init() {

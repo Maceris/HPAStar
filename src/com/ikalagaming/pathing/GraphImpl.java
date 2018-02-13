@@ -14,6 +14,12 @@ class GraphImpl implements Graph {
 	private final int w;
 	private final int h;
 
+	/**
+	 * Creates a {@link GraphImpl} with a specified width and height.
+	 * 
+	 * @param width the width of the graph
+	 * @param height the height of the graph
+	 */
 	public GraphImpl(final int width, final int height) {
 		nodes = new Node[width][height];
 		w = width;

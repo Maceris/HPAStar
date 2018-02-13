@@ -32,6 +32,11 @@ public class Node implements Comparable<Node>, Serializable {
 	public static final int MIN_LEVEL = 0;
 
 	/**
+	 * A node that does not exist.
+	 */
+	public static final Node DNE_NODE = new DNENode();
+
+	/**
 	 * Returns a new synchronized (thread-safe) point backed by the specified
 	 * object. In order to guarantee serial access, it is critical that
 	 * <b>all</b> access to the backing point is accomplished through the
@@ -55,10 +60,16 @@ public class Node implements Comparable<Node>, Serializable {
 	 * The y value for the point.
 	 */
 	private int yValue;
+
 	/**
 	 * The level for the point.
 	 */
 	private short lValue;
+
+	/**
+	 * Whether or not this node is an obstacle and blocks movement.
+	 */
+	private boolean isObstacle;
 
 	/**
 	 * Creates a new point at (0, 0) with a level of 0. This is the equivalent
@@ -183,6 +194,15 @@ public class Node implements Comparable<Node>, Serializable {
 	}
 
 	/**
+	 * If this node cannot be traveled through.
+	 *
+	 * @return true if this is an obstacle, false if it allows movement.
+	 */
+	public boolean isObstacle() {
+		return this.isObstacle;
+	}
+
+	/**
 	 * Sets the level of this point to the given number. Note that negative
 	 * values are not supported.
 	 *
@@ -209,6 +229,15 @@ public class Node implements Comparable<Node>, Serializable {
 		else {
 			this.lValue = (short) level;
 		}
+	}
+
+	/**
+	 * Sets this node to be an obstacle or not.
+	 *
+	 * @param obstacle true if this is an obstacle, false if it is not.
+	 */
+	public void setObstacle(boolean obstacle) {
+		this.isObstacle = obstacle;
 	}
 
 	/**
