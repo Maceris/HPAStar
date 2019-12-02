@@ -62,7 +62,14 @@ public class Pathing {
 	 * @param lvl the level to add.
 	 */
 	private void addLevelToGraph(final int lvl) {
-		// TODO handle invalid levels
+		if (lvl < Node.MIN_LEVEL) {
+			throw new IllegalArgumentException(
+				"level value is below the minimum allowed value");
+		}
+		if (lvl > Node.MAX_LEVEL) {
+			throw new IllegalArgumentException(
+				"level value is above the maximum allowed value");
+		}
 		this.clusters.set(lvl, this.buildClusters(lvl));
 		Set<Cluster> cL = this.clusters.get(lvl);
 		for (Cluster c1 : cL) {
