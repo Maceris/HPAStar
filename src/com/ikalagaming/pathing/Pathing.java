@@ -136,33 +136,34 @@ public class Pathing {
 		}
 	}
 
-	private boolean existsClearPath(final Node s, final Node g) {
-		int dx = Math.abs(g.getX() - s.getX());
-		int dy = Math.abs(g.getY() - s.getY());
-		int x = s.getX();
-		int y = s.getY();
-		int n = 1 + dx + dy;
-		int x_inc = (g.getX() > s.getX()) ? 1 : -1;
-		int y_inc = (g.getY() > s.getY()) ? 1 : -1;
-		int error = dx - dy;
-		dx *= 2;
-		dy *= 2;
+	private boolean existsClearPath(final Node start, final Node goal) {
+		int dx = Math.abs(goal.getX() - start.getX());
+		int dy = Math.abs(goal.getY() - start.getY());
+		int x = start.getX();
+		int y = start.getY();
+		int nodeCount = 1 + dx + dy;
+		int x_inc = (goal.getX() > start.getX()) ? 1 : -1;
+		int y_inc = (goal.getY() > start.getY()) ? 1 : -1;
+		int bias = dx - dy;
 
-		for (; n > 0; --n) {
+		for (; nodeCount > 0; --nodeCount) {
 			if (!this.graph.getNode(x, y).isPresent()) {
 				return false;
 			}
+			if (this.graph.getNode(x, y).get().isObstacle()) {
+				return false;
+			}
 
-			if (error > 0) {
+			if (bias > 0) {
 				x += x_inc;
-				error -= dy;
+				bias -= dy;
 			}
 			else {
 				y += y_inc;
-				error += dx;
+				bias += dx;
 			}
 		}
-		return false;
+		return true;
 	}
 
 	/**
